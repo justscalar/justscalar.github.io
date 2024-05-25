@@ -1,25 +1,17 @@
 ---
-layout: base
+layout: compress
 ---
+<!DOCTYPE html>
+<html lang="{% if page.language %}{{ page.language | downcase }}{% else %}{{ site.language | downcase }}{% endif %}">
+{% include head.html %}
 
-<div class="intro-header"></div>
-
-<main class="{% if page.full-width %} container-fluid {% else %} container-md {% endif %}">
-  {% if page.before-content %}
-    <div class="before-content">
-      {% for file in page.before-content %}
-        {% include {{ file }} %}
-      {% endfor %}
+<body class="home-template">
+    <div class="site-wrapper">
+        {% include header.html %}
+        {{ content }}
+        {% include footer.html %}
     </div>
-  {% endif %}
+</body>
 
-  {{ content }}
-
-  {% if page.after-content %}
-    <div class="after-content">
-      {% for file in page.after-content %}
-        {% include {{ file }} %}
-      {% endfor %}
-    </div>
-  {% endif %}
-</main>
+{% include global.html %}
+</html>
